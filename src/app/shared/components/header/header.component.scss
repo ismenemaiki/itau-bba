@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: #ffe8db;
+  padding: 10px 20px;
+  border-bottom: 4px solid orange;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 1366px;
+  max-width: 1600px;
+}
+.logo-container {
+  display: flex;
+  align-items: baseline;
+  .complete-logo {
+    top: -6px;
+    position: relative;
+    color: #0a1ad2;
+    font-weight: bold;
+    font-size: 24px;
+  }
+}
+.logo-container img {
+  height: 50px;
+  margin-right: 10px;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.user-info .language {
+  font-size: 16px;
+  font-weight: bold;
+}
+.user-info .profile {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.user-info .profile img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.user-info .profile .name {
+  font-weight: bold;
+}
+.user-info .profile .position {
+  color: gray;
+  font-size: 12px;
+}
+.arrow {
+  rotate: 90deg;
+  width: 1rem;
+  content: url("../../../../assets/images/arrow_forward.png");
+}
