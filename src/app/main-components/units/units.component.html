@@ -1,1 +1,7 @@
-<a (click)="viewUnits(1)">Polos - Itaú</a>
+<it-table 
+    [dataSourceInput]="data" 
+    [hasPagination]="true"
+    [title]="'Polos Itaú'"
+    [subtitle]="'confira abaixo alguns dos principais polos do Itaú'"
+    (actionItemTable)="redirectToDetail($event)" 
+></it-table>

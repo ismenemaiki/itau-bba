@@ -6,9 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./unit-detail.component.scss'],
 })
 export class UnitDetailComponent implements OnInit {
-  constructor() {}
 
   ngOnInit(): void {
-    console.log('componente de detalhes');
   }
 }
