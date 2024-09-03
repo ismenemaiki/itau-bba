@@ -3,13 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'it-unit-detail',
   templateUrl: './unit-detail.component.html',
-  styleUrls: ['./unit-detail.component.scss']
+  styleUrls: ['./unit-detail.component.scss'],
 })
 export class UnitDetailComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    console.log('componente de detalhes');
   }
-
 }

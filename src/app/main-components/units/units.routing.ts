@@ -6,12 +6,15 @@ import { UnitDetailComponent } from './unit-detail/unit-detail.component';
 const routes: Routes = [
   {
     path: '',
-    component: UnitsComponent,
     children: [
+      {
+        path: '',
+        component: UnitsComponent,
+      },
       {
         path: 'unidade/:id',
         data: { title: 'detalhe do polo' },
-        component: UnitDetailComponent
+        component: UnitDetailComponent,
       },
     ],
   },

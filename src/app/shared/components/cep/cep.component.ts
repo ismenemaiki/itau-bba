@@ -4,13 +4,14 @@ import { CepService } from '../../services/cep.service';
 @Component({
   selector: 'it-cep',
   templateUrl: './cep.component.html',
-  styleUrls: ['./cep.component.scss']
+  styleUrls: ['./cep.component.scss'],
 })
 export class CepComponent implements OnInit {
-
-  constructor(private cepService: CepService) { }
+  constructor(private cepService: CepService) {}
 
   ngOnInit(): void {
-    console.log('get cep',this.cepService.searchAdressByCep('04850180'));
+    this.cepService.searchAdressByCep('04850180').then((res) => {
+      console.log('get cep', res);
+    });
   }
 }
