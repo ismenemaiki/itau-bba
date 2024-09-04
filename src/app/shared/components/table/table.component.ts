@@ -12,7 +12,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataTableConfig } from '../../configs/data-table.config';
-import { IBussiness } from '../../models/bussiness.model';
+import { IBusiness } from '../../models/business.model';
 
 @Component({
   selector: 'it-table',
@@ -20,7 +20,7 @@ import { IBussiness } from '../../models/bussiness.model';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit, OnChanges {
-  @Input() dataSourceInput!: IBussiness;
+  @Input() dataSourceInput!: IBusiness;
   @Input() title!: string;
   @Input() subtitle!: string;
   @Input() hasPagination!: boolean;
@@ -28,7 +28,7 @@ export class TableComponent implements OnInit, OnChanges {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  dataSource = new MatTableDataSource<IBussiness>(this.dataSourceInput as any);
+  dataSource = new MatTableDataSource<IBusiness>(this.dataSourceInput as any);
   columnsConfig = DataTableConfig.units.columns;
   displayedColumns: string[] = this.columnsConfig.map((column) => column.value);
 
@@ -45,7 +45,7 @@ export class TableComponent implements OnInit, OnChanges {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  clickItem(item: IBussiness): void {
+  clickItem(item: IBusiness): void {
     this.actionItemTable.emit(item);
   }
   applyFilter(event: Event) {

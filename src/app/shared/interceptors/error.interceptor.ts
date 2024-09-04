@@ -10,21 +10,23 @@ export class ErrorInterceptor implements HttpInterceptor {
   constructor(private snackBar: MatSnackBar) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('interceptor');
+    console.log('interceptor', req);
     
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
-
-        if (error instanceof HttpErrorResponse) {
-          this.snackBar.open('Ocorreu um erro: ' + (error.message || 'Desconhecido'), 'Fechar', {
-            duration: 5000,
-            horizontalPosition: 'right',
-            verticalPosition: 'top'
-          });
-        }
+        console.log('Erro capturado:', error);
         
-        return throwError((erro: string) => new Error(erro))
+        const errorMessage = error.error?.message || error.message || 'Erro desconhecido';
+
+        this.snackBar.open('Ocorreu um erro: ' + errorMessage, 'Fechar', {
+          duration: 5000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top'
+        });
+
+        return throwError(() => new Error(errorMessage));
       })
     );
   }
 }
+

@@ -1,7 +1,7 @@
-export interface IBussiness {
+export interface IBusiness {
     id: number;
     name: string;
-    bussiness: string;
+    business: string;
     valuation: number;
     active: boolean;
     cep: string;

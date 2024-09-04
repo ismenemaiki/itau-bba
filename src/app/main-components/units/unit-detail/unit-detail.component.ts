@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { IBussiness } from 'src/app/shared/models/bussiness.model';
+import { IBusiness } from 'src/app/shared/models/business.model';
 import { APIService } from 'src/app/shared/services/api.service';
 import { CepService } from 'src/app/shared/services/cep.service';
 
@@ -12,7 +12,7 @@ import { CepService } from 'src/app/shared/services/cep.service';
 })
 export class UnitDetailComponent implements OnInit {
   idCompany!: number;
-  dataCompany!: IBussiness | any;
+  dataCompany!: IBusiness | any;
   formGroup!: FormGroup;
 
   constructor(

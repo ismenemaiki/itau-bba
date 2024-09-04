@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { IBussiness } from 'src/app/shared/models/bussiness.model';
+import { IBusiness } from 'src/app/shared/models/business.model';
 import { APIService } from 'src/app/shared/services/api.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { APIService } from 'src/app/shared/services/api.service';
   styleUrls: ['./units.component.scss'],
 })
 export class UnitsComponent implements OnInit {
-  data!: IBussiness;
+  data!: IBusiness;
   dataSource = new MatTableDataSource<any>([]);
 
   constructor(
@@ -32,7 +32,7 @@ export class UnitsComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  redirectToDetail(item: IBussiness) {
+  redirectToDetail(item: IBusiness) {
     console.log('ITEM ', item);
     this.router.navigate(['polos/unidade', item.id]);
   }
