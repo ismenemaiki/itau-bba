@@ -13,7 +13,6 @@
         <mat-label>CEP</mat-label>
         <input
           matInput
-          placeholder="Ex. 00000-000"
           formControlName="cep"
         />
       </mat-form-field>
@@ -116,7 +115,7 @@
         <mat-label>Ativo</mat-label>
         <mat-select
           disableRipple
-          [(ngModel)]="dataCompany && dataCompany.active"
+          [ngModel]="dataCompany && dataCompany.active"
           [ngModelOptions]="{ standalone: true }"
           name="active"
         >

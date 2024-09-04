@@ -1,19 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import cepPromise from 'cep-promise';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CepService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  public searchAdressByCep(cep: string): Promise<any> {
-    return cepPromise(cep)
-      .then(result => result)
-      .catch(error => {
-        console.error('Erro ao buscar o CEP:', error);
-        throw error;
-      });
+  public searchAddressByCep(cep: string): Observable<any> {
+    const url = `https://brasilapi.com.br/api/cep/v1/${cep}`;
+    return this.http.get(url);
   }
 }

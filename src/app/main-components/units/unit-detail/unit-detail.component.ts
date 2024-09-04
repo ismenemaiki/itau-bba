@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IBusiness } from 'src/app/shared/models/business.model';
 import { APIService } from 'src/app/shared/services/api.service';
@@ -20,61 +21,78 @@ export class UnitDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private cepService: CepService
+    private cepService: CepService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.idCompany = Number(this.route.snapshot.paramMap.get('id'));
     this.getDetailUnit(this.idCompany);
 
+    let initialize = ['', [Validators.required]];
     this.formGroup = this.fb.group({
-      cep: ['', [Validators.required, Validators.pattern(/^\d{5}-\d{3}$/)]],
-      street: ['', Validators.required],
-      neighborhood: ['', Validators.required],
-      state: ['', Validators.required],
-      city: ['', Validators.required],
+      cep: initialize,
+      street: initialize,
+      neighborhood: initialize,
+      state: initialize,
+      city: initialize,
 
-      name: ['', Validators.required],
-      business: ['', Validators.required],
-      valuation: ['', Validators.required],
-      active: ['', Validators.required],
-      cnpj: ['', Validators.required],
+      name: initialize,
+      business: initialize,
+      valuation: initialize,
+      active: initialize,
+      cnpj: initialize,
     });
   }
   getDetailUnit(id: number): void {
     this.APIService.getDetailCompany(id).subscribe({
       next: (companyRes) => {
         this.dataCompany = companyRes;
-  
-        this.cepService.searchAdressByCep(companyRes.cep).then(addressRes => {
-          this.formGroup.patchValue({
-            cep: addressRes.cep || companyRes.cep || '',
-            street: addressRes.street || '',
-            neighborhood: addressRes.neighborhood || '',
-            state: addressRes.state || '',
-            city: addressRes.city || '',
 
-            name: companyRes.name || '',
-            business: companyRes.business || '',
-            valuation: companyRes.valuation || '',
-            active: companyRes.active || true,
-            cnpj: companyRes.cnpj || ''
-          });
-        }).catch(error => {
-          console.error('Erro ao buscar o endereço pelo CEP:', error);
-        });
+        this.cepService
+          .searchAddressByCep(companyRes.cep)
+          .subscribe((addressRes) => {
+            this.formGroup.patchValue({
+              cep: addressRes.cep || companyRes.cep || '',
+              street: addressRes.street || '',
+              neighborhood: addressRes.neighborhood || '',
+              state: addressRes.state || '',
+              city: addressRes.city || '',
+
+              name: companyRes.name || '',
+              business: companyRes.business || '',
+              valuation: companyRes.valuation || '',
+              active: companyRes.active || true,
+              cnpj: companyRes.cnpj || '',
+            });
+          })
+          
       },
       error: (err) => {
         console.error('Erro ao buscar detalhes da empresa:', err);
-      }
+      },
     });
   }
-  onSubmit(): void {   
-     
+  onSubmit(): void {    
     if (this.formGroup.valid) {
-      console.log('VALIDO',this.formGroup.value);
+      this.snackBar.open(
+        `Dados salvos com sucesso. Voce será redirecionado em 5 segundos `,
+        'Fechar',
+        {
+          duration: 5000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        }
+      );
+      setTimeout(() => {
+        this.goBack()
+      }, 5000);
     } else {
-      console.log('Formulário inválido',this.formGroup);
+      this.snackBar.open('Verifique os campos obrigatórios!', 'Fechar', {
+        duration: 5000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+      });
     }
   }
   onCepChange(dataAddress: any): void {
@@ -87,6 +105,6 @@ export class UnitDetailComponent implements OnInit {
     });
   }
   goBack(): void {
-    this.router.navigate(['polos'])
+    this.router.navigate(['polos']);
   }
 }

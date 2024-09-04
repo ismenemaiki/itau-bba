@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { NgxMaskModule } from 'ngx-mask';
 
 const modulesImportExport = [
   FormsModule,
@@ -29,7 +30,7 @@ const modulesImportExport = [
     TableComponent],
   imports: [
     CommonModule,
-
+    NgxMaskModule.forRoot(),
     modulesImportExport
   ],
   exports: [

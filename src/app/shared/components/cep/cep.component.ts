@@ -39,7 +39,7 @@ export class CepComponent implements OnInit, OnChanges {
   searchCep(): void {
     const cepValue = this.formGroup.get('cep')?.value;
     if (cepValue) {
-      this.cepService.searchAdressByCep(cepValue).then((res) => {
+      this.cepService.searchAddressByCep(cepValue).subscribe((res) => {
         console.log('get cep', res);
         this.cepChanged.emit(res);
       });
