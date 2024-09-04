@@ -5,13 +5,15 @@ import { UnitsRoutingModule } from './units.routing';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { NgxMaskModule } from 'ngx-mask';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [UnitsComponent, UnitDetailComponent ],
   imports: [
     CommonModule,
     UnitsRoutingModule,
-    SharedModule, 
+    SharedModule,
+    TranslateModule,
     NgxMaskModule.forRoot()
   ],
   
