@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IBusiness } from 'src/app/shared/models/business.model';
 import { APIService } from 'src/app/shared/services/api.service';
 import { CepService } from 'src/app/shared/services/cep.service';
@@ -18,6 +18,7 @@ export class UnitDetailComponent implements OnInit {
   constructor(
     private APIService: APIService,
     private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder,
     private cepService: CepService
   ) {}
@@ -84,5 +85,8 @@ export class UnitDetailComponent implements OnInit {
       state: dataAddress.state || '',
       city: dataAddress.city || ''
     });
+  }
+  goBack(): void {
+    this.router.navigate(['polos'])
   }
 }
