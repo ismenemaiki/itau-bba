@@ -8,19 +8,33 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
+const modulesImportExport = [
+  FormsModule,
+  MatTableModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatIconModule,
+  MatSortModule,
+  MatFormFieldModule,
+  MatInputModule,
+  ReactiveFormsModule,
+  MatSelectModule
+]
 @NgModule({
-  declarations: [CepComponent, TableComponent],
+  declarations: [
+    CepComponent, 
+    TableComponent],
   imports: [
     CommonModule,
-    MatTableModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatSortModule,
-    MatFormFieldModule,
-    MatInputModule,
+
+    modulesImportExport
   ],
-  exports: [CepComponent, TableComponent],
+  exports: [
+    CepComponent, 
+    TableComponent,
+    modulesImportExport],
 })
 export class SharedModule {}

@@ -1,0 +1,22 @@
+.form {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-items: stretch;
+  align-items: stretch;
+}
+.address-detail {
+  grid-template-columns: 2fr 4fr 2fr 2fr 2fr;
+}
+.company-detail {
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+}
+.btn {
+  font-weight: 500;
+}
+.btn-primary {
+  background-color: #fa8341;
+  border-color: #fa8341;
+  width: 140px;
+  margin-left: 14px;
+}
