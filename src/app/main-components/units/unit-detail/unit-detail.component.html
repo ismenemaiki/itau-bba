@@ -1,0 +1,139 @@
+<div class="content">
+  <div>
+    <h2>{{ "unit-detail.title" | translate }} {{ dataCompany?.name }}</h2>
+    <h4>
+      {{ "unit-detail.subtitle" | translate }} {{ dataCompany?.name }} #
+      {{ dataCompany?.id }}
+    </h4>
+  </div>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <p>{{ "unit-detail.address-detail" | translate }}</p>
+    <div class="form address-detail">
+      <mat-form-field appearance="outline" style="display: none">
+        <mat-label>{{ "unit-detail.fields.zip-code" | translate }}</mat-label>
+        <input matInput formControlName="cep" />
+      </mat-form-field>
+
+      <it-cep
+        #cepComponent
+        [cep]="formGroup.get('cep')?.value"
+        (cepChanged)="onCepChange($event)"
+      ></it-cep>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "unit-detail.fields.street" | translate }}</mat-label>
+        <input
+          matInput
+          placeholder="Ex. Rua Conceição"
+          formControlName="street"
+        />
+        <mat-error *ngIf="formGroup.get('street')?.hasError('required')">
+          {{ "unit-detail.required.street" | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{
+          "unit-detail.fields.neighborhood" | translate
+        }}</mat-label>
+        <input
+          matInput
+          placeholder="Ex. Jabaquara"
+          formControlName="neighborhood"
+        />
+        <mat-error *ngIf="formGroup.get('neighborhood')?.hasError('required')">
+          {{ "unit-detail.required.neighborhood" | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "unit-detail.fields.state" | translate }}</mat-label>
+        <input matInput placeholder="Ex. São Paulo" formControlName="state" />
+        <mat-error *ngIf="formGroup.get('state')?.hasError('required')">
+          {{ "unit-detail.required.state" | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "unit-detail.fields.city" | translate }}</mat-label>
+        <input matInput placeholder="Ex. SP" formControlName="city" />
+        <mat-error *ngIf="formGroup.get('city')?.hasError('required')">
+          {{ "unit-detail.required.city" | translate }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <p>{{ "unit-detail.company-detail" | translate }}</p>
+    <div class="form company-detail">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "unit-detail.fields.name" | translate }}</mat-label>
+        <input matInput placeholder="Ex. Itaú BBA" formControlName="name" />
+        <mat-error *ngIf="formGroup.get('name')?.hasError('required')">
+          {{ "unit-detail.required.name" | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "unit-detail.fields.business" | translate }}</mat-label>
+        <input matInput placeholder="Ex. Itaú CTO" formControlName="business" />
+        <mat-error *ngIf="formGroup.get('business')?.hasError('required')">
+          {{ "unit-detail.required.business" | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "unit-detail.fields.valuation" | translate }}</mat-label>
+        <input
+          matInput
+          placeholder="Ex. R$ 900.000,00"
+          formControlName="valuation"
+          type="text"
+          mask="separator.0"
+          thousandSeparator=","
+          prefix="R$ "
+        />
+        <mat-error *ngIf="formGroup.get('valuation')?.hasError('required')">
+          {{ "unit-detail.required.valuation" | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "unit-detail.fields.cnpj" | translate }}</mat-label>
+        <input
+          matInput
+          placeholder="Ex. 00.000.000/0001-00"
+          formControlName="cnpj"
+          mask="CPF_CNPJ"
+        />
+
+        <mat-error *ngIf="formGroup.get('cnpj')?.hasError('required')">
+          {{ "unit-detail.required.cnpj" | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "unit-detail.fields.active" | translate }}</mat-label>
+        <mat-select
+          disableRipple
+          [ngModel]="dataCompany && dataCompany.active"
+          [ngModelOptions]="{ standalone: true }"
+          name="active"
+        >
+          <mat-option [value]="true">{{
+            "unit-detail.fields.options.yes" | translate
+          }}</mat-option>
+          <mat-option [value]="false">{{
+            "unit-detail.fields.options.no" | translate
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button type="button" class="btn btn-secondary" (click)="goBack()">
+      {{ "unit-detail.btn-goback" | translate }}
+    </button>
+    <button type="button" class="btn btn-primary" type="submit">
+      {{ "unit-detail.btn-save" | translate }}
+    </button>
+  </form>
+</div>

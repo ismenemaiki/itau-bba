@@ -1,0 +1,30 @@
+table {
+  width: 100%;
+}
+.red-dot {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: red;
+  border-radius: 50%;
+}
+.red-green {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: green;
+  border-radius: 50%;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+mat-form-field {
+  width: 380px;
+}
+.icon-visibility {
+  display: inline-flex;
+  background: url(../../../../assets/images/icons8-visível-24.png) no-repeat;
+  width: 24px;
+  height: 24px;
+}

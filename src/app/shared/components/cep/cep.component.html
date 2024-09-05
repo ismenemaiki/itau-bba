@@ -1,0 +1,19 @@
+<form [formGroup]="formGroup">
+  <mat-form-field appearance="outline">
+    <mat-label>CEP</mat-label>
+    <input
+      #cep
+      matInput
+      placeholder="Ex. 00000-000"
+      formControlName="cep"
+      (blur)="searchCep()"
+      mask="00000-000"
+    />
+    <mat-error *ngIf="formGroup.get('cep')?.hasError('required')">
+      CEP é obrigatório
+    </mat-error>
+    <mat-error *ngIf="formGroup.get('cep')?.hasError('pattern')">
+      CEP deve estar no formato 00000-000
+    </mat-error>
+  </mat-form-field>
+</form>

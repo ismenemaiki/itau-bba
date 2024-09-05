@@ -1,0 +1,6 @@
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <!-- aqui faço uso do routerLink para variar, pois já utilizei rota por injeção -->
+  <button mat-menu-item routerLink="/polos">Lista de Polos Itaú</button>
+  <button mat-menu-item (click)="redirect()">Cadastro de parametro</button>
+</mat-menu>

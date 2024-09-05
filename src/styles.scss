@@ -37,3 +37,10 @@ $processo-itau-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* styles.css */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+h2 {
+  margin-bottom: 0 !important;
+}

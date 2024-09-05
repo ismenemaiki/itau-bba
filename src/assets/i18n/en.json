@@ -1,0 +1,44 @@
+{
+  "unit-component": {
+    "title": "Itaú Cubo Hub",
+    "subtitle": "Check out some of Itaú's main hubs below",
+    "name-user": "Maiki Rodrigues",
+    "position": "Software Engineer - Itaú BBA",
+    "label-search": "Search..."
+  },
+  "unit-detail": {
+    "title": "Hub",
+    "subtitle": "Displaying hub details",
+    "address-detail": "Address Details",
+    "company-detail": "Company Details",
+    "btn-goback": "Back",
+    "btn-save": "Save",
+    "fields": {
+      "zip-code": "ZIP code",
+      "street": "Street",
+      "neighborhood": "Neighborhood",
+      "state": "State",
+      "city": "City",
+      "name": "Name",
+      "business": "Business",
+      "valuation": "Valuation",
+      "active": "Active",
+      "cep": "ZIP Code",
+      "cnpj": "CNPJ",
+      "options": {
+        "yes": "Yes",
+        "no": "No"
+      }
+    },
+    "required": {
+      "street": "Street is required",
+      "neighborhood": "Neighborhood is required",
+      "state": "State is required",
+      "city": "City is required",
+      "name": "Name is required",
+      "business": "Business is required",
+      "valuation": "Valuation is required",
+      "cnpj": "CNPJ is required"
+    }
+  }
+}
