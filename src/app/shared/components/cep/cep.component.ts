@@ -8,11 +8,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { CepService } from '../../services/cep.service';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'it-cep',
@@ -32,7 +28,7 @@ export class CepComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['cep'] && this.cep) {
-      this.searchCep()
+      this.searchCep();
       this.formGroup.get('cep')?.setValue(this.cep, { emitEvent: false });
     }
   }
@@ -40,7 +36,6 @@ export class CepComponent implements OnInit, OnChanges {
     const cepValue = this.formGroup.get('cep')?.value;
     if (cepValue) {
       this.cepService.searchAddressByCep(cepValue).subscribe((res) => {
-        console.log('get cep', res);
         this.cepChanged.emit(res);
       });
     }

@@ -1,6 +1,44 @@
 {
+  "unit-component": {
     "title": "Polo Cubo Itaú",
     "subtitle": "confira abaixo alguns dos principais polos do Itaú",
     "name-user": "Maiki Rodrigues",
-    "position": "Software Engineer - Itaú BBA"
+    "position": "Software Engineer - Itaú BBA",
+    "label-search": "Pesquisar..."
+  },
+  "unit-detail": {
+    "title": "Polo",
+    "subtitle": "exibindo detalhes do polo",
+    "address-detail": "Detalhes do Endereço",
+    "company-detail": "Detalhes da Empresa",
+    "btn-goback": "Voltar",
+    "btn-save": "Salvar",
+    "fields": {
+      "zip-code": "CEP",
+      "street": "Rua",
+      "neighborhood": "Bairro",
+      "state": "Estado",
+      "city": "Cidade",
+      "name": "Nome",
+      "business": "Empresa",
+      "valuation": "Valor",
+      "active": "Ativo",
+      "cep": "CEP",
+      "cnpj": "CNPJ",
+      "options": {
+        "yes": "Sim",
+        "no": "Não"
+      }
+    },
+    "required": {
+      "street": "Rua é obrigatória",
+      "neighborhood": "Bairro é obrigatório",
+      "state": "Estado é obrigatório",
+      "city": "Cidade é obrigatória",
+      "name": "Nome é obrigatório",
+      "business": "Empresa é obrigatória",
+      "valuation": "Valor é obrigatório",
+      "cnpj": "CNPJ é obrigatória"
+    }
+  }
 }

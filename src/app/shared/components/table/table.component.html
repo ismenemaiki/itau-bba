@@ -4,7 +4,7 @@
     <h4>{{ subtitle }}</h4>
   </div>
   <mat-form-field appearance="outline">
-    <mat-label>Pesquisar...</mat-label>
+    <mat-label>{{ label }}</mat-label>
     <input
       matInput
       (keyup)="applyFilter($event)"
@@ -31,6 +31,12 @@
         <ng-container *ngIf="column.value === 'active'">
           <span [ngClass]="element.active ? 'red-green' : 'red-dot'"></span>
         </ng-container>
+        <ng-container *ngIf="column.value === 'valuation'">
+          {{
+            element[column.value]
+              | currency : currentCurrency : "symbol" : "1.2-2"
+          }}
+        </ng-container>
         <ng-container *ngIf="column.value === 'name'">
           <strong>{{ element[column.value] }}</strong>
         </ng-container>
@@ -38,6 +44,7 @@
           *ngIf="
             column.value !== 'active' &&
             column.value !== 'action' &&
+            column.value !== 'valuation' &&
             column.value !== 'name'
           "
         >

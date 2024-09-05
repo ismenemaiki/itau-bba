@@ -5,15 +5,20 @@
       <p class="complete-logo">BBA</p>
     </div>
     <div class="user-info">
-      <span class="language">PT</span>
+      <span (click)="switchLanguage()" class="language">{{
+        currentLang === "pt" ? "EN" : "PT"
+      }}</span>
       <div class="profile">
         <img
           src="../../../../assets/images/photo-user.jpg"
           alt="User Profile"
         />
         <div>
-          <span class="name">Maiki Rodrigues</span><br />
-          <span class="position">Software Engineer - Itaú BBA</span>
+          <span class="name">{{ dataUser.name }}</span
+          ><br />
+          <span class="position"
+            >{{ dataUser.position }} - {{ dataUser.company }}</span
+          >
         </div>
         <span class="arrow">></span>
       </div>

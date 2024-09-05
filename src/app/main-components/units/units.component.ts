@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { DataTableConfig } from 'src/app/shared/configs/data-table.config';
 import { IBusiness } from 'src/app/shared/models/business.model';
 import { APIService } from 'src/app/shared/services/api.service';
 
@@ -12,18 +13,15 @@ import { APIService } from 'src/app/shared/services/api.service';
 export class UnitsComponent implements OnInit {
   data!: IBusiness;
   dataSource = new MatTableDataSource<any>([]);
-
-  constructor(
-    private APIService: APIService,
-    private router: Router
-  ) {}
+  dataTable = DataTableConfig.units.columns;
+  constructor(private APIService: APIService, private router: Router) {}
 
   ngOnInit(): void {
     this.APIService.getListCompanies().subscribe({
       next: (res) => {
         this.data = res;
         this.dataSource.data = this.data as any;
-      }
+      },
     });
   }
   applyFilter(filterValue: string): void {
@@ -33,7 +31,6 @@ export class UnitsComponent implements OnInit {
     }
   }
   redirectToDetail(item: IBusiness) {
-    console.log('ITEM ', item);
     this.router.navigate(['polos/unidade', item.id]);
   }
 }

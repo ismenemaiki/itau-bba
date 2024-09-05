@@ -9,10 +9,11 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataTableConfig } from '../../configs/data-table.config';
 import { IBusiness } from '../../models/business.model';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'it-table',
@@ -23,6 +24,7 @@ export class TableComponent implements OnInit, OnChanges {
   @Input() dataSourceInput!: IBusiness;
   @Input() title!: string;
   @Input() subtitle!: string;
+  @Input() label!: string;
   @Input() hasPagination!: boolean;
   @Output() actionItemTable: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -32,8 +34,15 @@ export class TableComponent implements OnInit, OnChanges {
   columnsConfig = DataTableConfig.units.columns;
   displayedColumns: string[] = this.columnsConfig.map((column) => column.value);
 
+  currentCurrency: string = 'BRL';
+
+  constructor(private languageService: LanguageService) {}
+
   ngOnInit(): void {
     this.dataSource.sort = this.sort;
+    this.languageService.currentCurrency$.subscribe((currency) => {
+      this.currentCurrency = currency;
+    });
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['dataSourceInput'] && this.dataSourceInput) {
@@ -41,7 +50,6 @@ export class TableComponent implements OnInit, OnChanges {
       this.dataSource.sort = this.sort;
     }
   }
-
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }

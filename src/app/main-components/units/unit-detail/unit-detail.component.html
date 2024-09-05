@@ -1,20 +1,18 @@
 <div class="content">
   <div>
-    <h2>Polo {{ dataCompany?.name }}</h2>
+    <h2>{{ "unit-detail.title" | translate }} {{ dataCompany?.name }}</h2>
     <h4>
-      exibindo detalhes do polo {{ dataCompany?.name }} # {{ dataCompany?.id }}
+      {{ "unit-detail.subtitle" | translate }} {{ dataCompany?.name }} #
+      {{ dataCompany?.id }}
     </h4>
   </div>
 
-  <p>Detalhes do Endereço</p>
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <p>{{ "unit-detail.address-detail" | translate }}</p>
     <div class="form address-detail">
       <mat-form-field appearance="outline" style="display: none">
-        <mat-label>CEP</mat-label>
-        <input
-          matInput
-          formControlName="cep"
-        />
+        <mat-label>{{ "unit-detail.fields.zip-code" | translate }}</mat-label>
+        <input matInput formControlName="cep" />
       </mat-form-field>
 
       <it-cep
@@ -24,65 +22,68 @@
       ></it-cep>
 
       <mat-form-field appearance="outline">
-        <mat-label>Rua</mat-label>
+        <mat-label>{{ "unit-detail.fields.street" | translate }}</mat-label>
         <input
           matInput
           placeholder="Ex. Rua Conceição"
           formControlName="street"
         />
         <mat-error *ngIf="formGroup.get('street')?.hasError('required')">
-          Rua é obrigatória
+          {{ "unit-detail.required.street" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Bairro</mat-label>
+        <mat-label>{{
+          "unit-detail.fields.neighborhood" | translate
+        }}</mat-label>
         <input
           matInput
           placeholder="Ex. Jabaquara"
           formControlName="neighborhood"
         />
         <mat-error *ngIf="formGroup.get('neighborhood')?.hasError('required')">
-          Bairro é obrigatório
+          {{ "unit-detail.required.neighborhood" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Estado</mat-label>
+        <mat-label>{{ "unit-detail.fields.state" | translate }}</mat-label>
         <input matInput placeholder="Ex. São Paulo" formControlName="state" />
         <mat-error *ngIf="formGroup.get('state')?.hasError('required')">
-          Estado é obrigatório
+          {{ "unit-detail.required.state" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Cidade</mat-label>
+        <mat-label>{{ "unit-detail.fields.city" | translate }}</mat-label>
         <input matInput placeholder="Ex. SP" formControlName="city" />
         <mat-error *ngIf="formGroup.get('city')?.hasError('required')">
-          Cidade é obrigatória
+          {{ "unit-detail.required.city" | translate }}
         </mat-error>
       </mat-form-field>
     </div>
 
+    <p>{{ "unit-detail.company-detail" | translate }}</p>
     <div class="form company-detail">
       <mat-form-field appearance="outline">
-        <mat-label>Nome</mat-label>
+        <mat-label>{{ "unit-detail.fields.name" | translate }}</mat-label>
         <input matInput placeholder="Ex. Itaú BBA" formControlName="name" />
         <mat-error *ngIf="formGroup.get('name')?.hasError('required')">
-          Nome é obrigatório
+          {{ "unit-detail.required.name" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Empresa</mat-label>
+        <mat-label>{{ "unit-detail.fields.business" | translate }}</mat-label>
         <input matInput placeholder="Ex. Itaú CTO" formControlName="business" />
         <mat-error *ngIf="formGroup.get('business')?.hasError('required')">
-          Empresa é obrigatória
+          {{ "unit-detail.required.business" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Valor</mat-label>
+        <mat-label>{{ "unit-detail.fields.valuation" | translate }}</mat-label>
         <input
           matInput
           placeholder="Ex. R$ 900.000,00"
@@ -93,12 +94,12 @@
           prefix="R$ "
         />
         <mat-error *ngIf="formGroup.get('valuation')?.hasError('required')">
-          Valor/ Valuation é obrigatório
+          {{ "unit-detail.required.valuation" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>CNPJ</mat-label>
+        <mat-label>{{ "unit-detail.fields.cnpj" | translate }}</mat-label>
         <input
           matInput
           placeholder="Ex. 00.000.000/0001-00"
@@ -107,24 +108,32 @@
         />
 
         <mat-error *ngIf="formGroup.get('cnpj')?.hasError('required')">
-          CNPJ é obrigatória
+          {{ "unit-detail.required.cnpj" | translate }}
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Ativo</mat-label>
+        <mat-label>{{ "unit-detail.fields.active" | translate }}</mat-label>
         <mat-select
           disableRipple
           [ngModel]="dataCompany && dataCompany.active"
           [ngModelOptions]="{ standalone: true }"
           name="active"
         >
-          <mat-option [value]="true">Sim</mat-option>
-          <mat-option [value]="false">Não</mat-option>
+          <mat-option [value]="true">{{
+            "unit-detail.fields.options.yes" | translate
+          }}</mat-option>
+          <mat-option [value]="false">{{
+            "unit-detail.fields.options.no" | translate
+          }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
-    <button type="button" class="btn btn-secondary" (click)="goBack()">Voltar</button>
-    <button type="button" class="btn btn-primary" type="submit">Salvar</button>
+    <button type="button" class="btn btn-secondary" (click)="goBack()">
+      {{ "unit-detail.btn-goback" | translate }}
+    </button>
+    <button type="button" class="btn btn-primary" type="submit">
+      {{ "unit-detail.btn-save" | translate }}
+    </button>
   </form>
 </div>
