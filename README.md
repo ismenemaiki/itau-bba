@@ -1,27 +1,54 @@
-# ProcessoItau
+# itau-bba
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
+Desafio técnico para Itaú BBA
 
-## Development server
+Nivelamento de conhecimento e requisitos:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Aplicação simples de listagem e detalhamento de item com APIs REST;
 
-## Code scaffolding
+Versão do Angular utilizado: 13
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Versão do Node.js: 18.18.0
 
-## Build
+Versão do NPM: 10.4.0
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Layout proposto: https://projects.invisionapp.com/share/P510TQNYQ3TJ#/screens/450456419
 
-## Running unit tests
+Endpoint de listagem: https://antlia-mockapi.azurewebsites.net/api/v1/itau_teste
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Endpoint do item detalhado: https://antlia-mockapi.azurewebsites.net/api/v1/itau_teste/:id
 
-## Running end-to-end tests
+Hospedagem/ deploy: vercel? ou https://www.netlify.com/
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Detalhe dos itens desenvolvidos:
 
-## Further help
+1. Componentes (todos com prefixo it de itau):
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Buscador de cep (it-cep)
+- header (it-header)
+- tabela dinamica (it-table)
+- componente de renderização principal (it-main-components)
+- home (it-home)
+- listagem de polos (it-unit)
+- detalhamento do polo (it-unit-detail)
+
+2. Pipes:
+
+- máscara nos inputs (ngx-mask)
+- valor monetário (currency pipe)
+- tradutor (i18n)
+
+3. Interceptors:
+
+- interceptador de erros de requisições (it-error-handler)
+- loader das requisições (it-loader) não fiz
+
+4. Serviços:
+
+- serviço do Felipe Deschamps (cep.service)
+- serviço de listagem dos itens da Antlia (api.service)
+- serviço de alteração de i18n [Precisei fazer um PubSub para alterar onde queria] (language.service)
+
+5. Configuração:
+
+- arquivo para configuração de tabela dinamicamente [nao consegui traduzir por conta do tempo] (data-table.config)
