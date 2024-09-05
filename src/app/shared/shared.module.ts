@@ -11,6 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxMaskModule } from 'ngx-mask';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 const modulesImportExport = [
   FormsModule,
@@ -22,7 +24,10 @@ const modulesImportExport = [
   MatFormFieldModule,
   MatInputModule,
   ReactiveFormsModule,
-  MatSelectModule
+  MatSelectModule,
+  MatMenuModule,
+  MatButtonModule
+
 ]
 @NgModule({
   declarations: [
